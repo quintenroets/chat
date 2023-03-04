@@ -1,9 +1,12 @@
 import json
+import os
 from dataclasses import dataclass
 
+import cli
 import requests
 
 from .api import API, Message, Messages, Role
+from .path import Path
 
 
 @dataclass
@@ -14,8 +17,13 @@ class ChatManager:
     def __post_init__(self):
         self.messages = Messages()
         self.api = API()
+        self.history_path = Path.session.with_nonexistent_name()
+        self.user_title_text: str = f"{os.getlogin().capitalize()}: "
+        self.chatbot_title_text: str = "ChatGPT: "
+        self.copy_replies: bool = self.can_copy_text()
 
     def send(self, prompt: str):
+        self.log(self.user_title_text + prompt + "\n" * 2)
         message = Message(role=Role.user, content=prompt)
         self.messages.append(message)
 
@@ -31,6 +39,18 @@ class ChatManager:
         reply = "".join(chunks)
         message = Message(role=Role.assistant, content=reply)
         self.messages.append(message)
+        self.log(self.chatbot_title_text + reply + "\n" * 2)
+        self.copy_to_clipboard(reply)
+
+    def log(self, message):
+        with self.history_path.open("a") as fp:
+            fp.write(message)
+
+    @classmethod
+    def copy_to_clipboard(cls, text: str):
+        with Path.tempfile() as tmp:
+            tmp.text = text
+            cli.run("xclip", tmp, "-selection", "clipboard")
 
     def get_response_chunks(self):
         whitespace_seen = False
@@ -64,3 +84,10 @@ class ChatManager:
                         yield response
                 api_response_parts = []
             api_response_parts.append(chunk)
+
+    @classmethod
+    def can_copy_text(cls):
+        required_programs = ("echo", "xclip")
+        return all(
+            cli.return_code(f"which {program}") == 0 for program in required_programs
+        )

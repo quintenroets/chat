@@ -9,11 +9,14 @@ from .chatmanager import ChatManager
 
 @dataclass
 class Chat:
-    personal_title: Text = Text("User: ", style=Style(color="green", bold=True))
-    assistant_title: Text = Text("Chatgpt: ", style=Style(color="blue", bold=True))
-
     def __post_init__(self):
         self.manager = ChatManager()
+        self.personal_title = Text(
+            self.manager.user_title_text, style=Style(color="green", bold=True)
+        )
+        self.assistant_title = Text(
+            self.manager.chatbot_title_text, style=Style(color="blue", bold=True)
+        )
 
     def send(self, prompt: str):
         self.manager.send(prompt)
