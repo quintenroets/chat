@@ -33,6 +33,6 @@ class Chat:
             for chunk in self.manager.get_reply_chunks():
                 print(chunk, end="", flush=True)
         except KeyboardInterrupt:
-            chatmanager.messages.messages.pop(-1)
+            self.manager.messages.messages.pop(-1)
         finally:
             print("\n")
