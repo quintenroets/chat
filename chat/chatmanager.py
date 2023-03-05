@@ -40,7 +40,8 @@ class ChatManager:
         message = Message(role=Role.assistant, content=reply)
         self.messages.append(message)
         self.log(self.chatbot_title_text + reply + "\n" * 2)
-        self.copy_to_clipboard(reply)
+        if self.copy_replies:
+            self.copy_to_clipboard(reply)
 
     def log(self, message):
         with self.history_path.open("a") as fp:
