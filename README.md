@@ -1,4 +1,4 @@
-# Chapgpt-cli
+# Superchat-cli
 Command-line interface for Chatgpt
 
 ## Usage
@@ -10,7 +10,7 @@ chat
 ## Installation
 
 ```shell
-pip install chatgpt-cli
+pip install superchat-cli
 requires python version >= 3.9
 ```
 
