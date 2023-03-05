@@ -18,7 +18,7 @@ class ChatManager:
         self.messages = Messages()
         self.api = API()
         self.history_path = Path.session.with_nonexistent_name()
-        self.user_title_text: str = f"{os.getlogin().capitalize()}: "
+        self.user_title_text: str = f"{self.get_username()}: "
         self.chatbot_title_text: str = "ChatGPT: "
         self.copy_replies: bool = self.can_copy_text()
 
@@ -91,3 +91,11 @@ class ChatManager:
         return all(
             cli.return_code(f"which {program}") == 0 for program in required_programs
         )
+
+    @classmethod
+    def get_username(cls) -> str:
+        try:
+            username = os.getlogin().capitalize()
+        except OSError:
+            username = "User"
+        return username
