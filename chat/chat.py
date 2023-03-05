@@ -28,6 +28,11 @@ class Chat:
             self.manager.retrieve_reply()
 
         cli.console.print(self.assistant_title, end="")
-        for chunk in self.manager.get_reply_chunks():
-            print(chunk, end="")
-        print("\n")
+
+        try:
+            for chunk in self.manager.get_reply_chunks():
+                print(chunk, end="", flush=True)
+        except KeyboardInterrupt:
+            chatmanager.messages.messages.pop(-1)
+        finally:
+            print("\n")
