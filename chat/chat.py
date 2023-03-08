@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 import cli
+from requests import exceptions
 from rich.style import Style
 from rich.text import Text
 
@@ -22,6 +23,9 @@ class Chat:
         self.manager.send(prompt)
         self.show_reply()
 
+    def clean_history(self):
+        self.manager.messages.messages.pop(-1)
+
     def show_reply(self):
         print("")
         with cli.status(""):
@@ -33,6 +37,9 @@ class Chat:
             for chunk in self.manager.get_reply_chunks():
                 print(chunk, end="", flush=True)
         except KeyboardInterrupt:
-            self.manager.messages.messages.pop(-1)
+            self.clean_history()
+        except exceptions.ReadTimeout:
+            self.clean_history()
+            print("Request timed out")
         finally:
             print("\n")
