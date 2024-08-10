@@ -10,4 +10,4 @@ class Config:
     history_path: Path = field(
         default_factory=lambda: Path.session.with_nonexistent_name(),
     )
-    pause_time: float | None = 0.1
+    pause_time: float | None = None
