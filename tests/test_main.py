@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
-from chat import main
+from chat.main.main import main
 
 
 @patch("builtins.input", return_value="")
