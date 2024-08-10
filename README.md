@@ -14,3 +14,5 @@ chat
 ```shell
 pip install powerchat-cli
 ```
+
+[langchain-ollama setup](https://dev.to/emmakodes_/how-to-run-llama-31-locally-in-python-using-ollama-langchain-k8k)
