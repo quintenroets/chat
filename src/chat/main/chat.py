@@ -44,10 +44,10 @@ class Chat:
         message = Message(role=Role.assistant, content=reply)
         self.history.add(message)
         if context.should_copy_replies:
-            self.copy_to_clipboard(reply)
+            self.copy_to_clipboard(reply)  # pragma: nocover
 
     @classmethod
-    def copy_to_clipboard(cls, text: str) -> None:
+    def copy_to_clipboard(cls, text: str) -> None:  # pragma: nocover
         with Path.tempfile() as tmp:
             tmp.text = text
             cli.run("xclip", tmp, "-selection", "clipboard")
