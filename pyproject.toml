@@ -1,12 +1,13 @@
 [project]
 name = "powerchat-cli"
 version = "0.1.0"
-description = "Template for Python package published on PyPI"
+description = "CLI interface for local LLM assistant"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "langchain-ollama>=0.1.1, <1",
     "package-utils[context] >=0.6.1, <1",
     "powercli >=0.3.2, <1",
 ]
