@@ -1,11 +1,13 @@
 import cli
 
+from chat.context.context import context
+
 from .chat import Chat
 
 
-def main():
+def main() -> None:
     chat = Chat()
     while True:
-        cli.console.print(chat.personal_title, end="")
+        cli.console.print(context.user_header, end="")
         prompt = input()
         chat.send(prompt)
