@@ -1,10 +1,11 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
+from langchain_ollama import OllamaLLM
+
 from chat.context import Context, context
 from chat.main.chat import Chat
 from chat.main.history import History
-from langchain_ollama import OllamaLLM
 
 
 @pytest.fixture()
