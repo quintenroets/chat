@@ -8,6 +8,6 @@ from .chat import Chat
 def main() -> None:
     chat = Chat()
     while True:
-        cli.console.print(context.user_header, end="")
+        cli.console.print(context.user_title, end="")
         prompt = input()
         chat.send(prompt)

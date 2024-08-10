@@ -6,15 +6,10 @@ from package_utils.context import Context as Context_
 from rich.style import Style
 from rich.text import Text
 
-from chat.main.history import History
 from chat.models import Config, Options
 
 
 class Context(Context_[Options, Config, None]):
-    @cached_property
-    def history(self) -> History:
-        return History()
-
     @cached_property
     def user_header(self) -> str:
         name = (
@@ -36,7 +31,7 @@ class Context(Context_[Options, Config, None]):
     def extract_username(cls) -> str:
         try:
             username = os.getlogin().capitalize()
-        except OSError:
+        except OSError:  # pragma: nocover
             username = "User"
         return username
 
