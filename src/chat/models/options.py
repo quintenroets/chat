@@ -5,5 +5,5 @@ from .path import Path
 
 @dataclass
 class Options:
-    debug: bool = True
     config_path: Path = Path.config
+    model: str = "llama3.1"

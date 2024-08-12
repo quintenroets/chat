@@ -13,7 +13,9 @@ from .history import History
 
 @dataclass
 class Chat:
-    assistant: OllamaLLM = field(default_factory=lambda: OllamaLLM(model="llama3.1"))
+    assistant: OllamaLLM = field(
+        default_factory=lambda: OllamaLLM(model=context.options.model),
+    )
     history: History = field(default_factory=lambda: History())
 
     def send(self, prompt: str) -> None:
