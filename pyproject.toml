@@ -1,6 +1,6 @@
 [project]
 name = "powerchat-cli"
-version = "0.1.3"
+version = "0.1.4"
 description = "CLI interface for local LLM assistant"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
 license = {text = "MIT"}
