@@ -12,6 +12,10 @@ Run
 ```shell
 chat
 ```
+or
+```shell
+powerchat
+```
 ## Installation
 1. [Setup langchain-ollama](https://dev.to/emmakodes_/how-to-run-llama-31-locally-in-python-using-ollama-langchain-k8k)
 
