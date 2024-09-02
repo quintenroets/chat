@@ -1,13 +1,14 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
+from langchain_ollama import OllamaLLM
+
 from chat.context import Context, context
 from chat.main.chat import Chat
 from chat.main.history import History
-from langchain_ollama import OllamaLLM
 
 
-@pytest.fixture()
+@pytest.fixture
 def test_context() -> Context:
     context.config.pause_time = 0.1
     return context
