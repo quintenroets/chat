@@ -1,8 +1,9 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
-from chat import cli
 from package_dev_utils.tests.args import no_cli_args
+
+from chat import cli
 
 
 @patch("builtins.input", return_value="")
