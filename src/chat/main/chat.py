@@ -14,7 +14,10 @@ from .history import History
 @dataclass
 class Chat:
     assistant: OllamaLLM = field(
-        default_factory=lambda: OllamaLLM(model=context.options.model),
+        default_factory=lambda: OllamaLLM(
+            model=context.options.model,
+            temperature=context.config.temperature,
+        ),
     )
     history: History = field(default_factory=lambda: History())
 
