@@ -14,9 +14,18 @@ from .history import History
 @dataclass
 class Chat:
     assistant: OllamaLLM = field(
-        default_factory=lambda: OllamaLLM(model=context.options.model),
+        default_factory=lambda: OllamaLLM(
+            model=context.options.model,
+            temperature=context.config.temperature,
+        ),
     )
     history: History = field(default_factory=lambda: History())
+
+    def __post_init__(self) -> None:
+        if context.options.system_prompt is not None:
+            content = context.options.system_prompt
+            message = Message(role=Role.system, content=content)
+            self.history.add(message)
 
     def send(self, prompt: str) -> None:
         message = Message(role=Role.user, content=prompt)

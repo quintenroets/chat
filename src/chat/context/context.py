@@ -6,7 +6,7 @@ from package_utils.context import Context as Context_
 from rich.style import Style
 from rich.text import Text
 
-from chat.models import Config, Options
+from chat.models import Config, Options, Role
 
 
 class Context(Context_[Options, Config, None]):
@@ -50,6 +50,17 @@ class Context(Context_[Options, Config, None]):
     @cached_property
     def assistant_title(self) -> Text:
         return Text(context.assistant_header, style=Style(color="blue", bold=True))
+
+    @property
+    def conversation_starter(self) -> Role | None:
+        return (
+            Role.assistant
+            if (
+                self.options.conversation_starter is None
+                and self.options.system_prompt is not None
+            )
+            else self.options.conversation_starter
+        )
 
 
 context = Context(Options, Config, None)

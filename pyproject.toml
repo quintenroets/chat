@@ -1,6 +1,6 @@
 [project]
 name = "powerchat-cli"
-version = "0.1.5"
+version = "0.1.6"
 description = "CLI interface for local LLM assistant"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
 license = {text = "MIT"}
@@ -51,8 +51,6 @@ fix = true
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-    "ANN101",   # annotate self
-    "ANN102",   # annotate cls
     "ANN401",   # annotated with Any
     "D",        # docstrings
     "G004",     # logging f-string

@@ -11,3 +11,4 @@ class Config:
         default_factory=lambda: Path.session.with_nonexistent_name(),
     )
     pause_time: float | None = None
+    temperature: float | None = None
