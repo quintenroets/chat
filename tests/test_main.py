@@ -7,6 +7,7 @@ from chat.main.main import main
 
 @patch("builtins.input", return_value="")
 @patch("chat.main.chat.Chat.send", side_effect=KeyboardInterrupt)
+@pytest.mark.usefixtures("test_context")
 def test_main(mocked_input: MagicMock, mocked_send: MagicMock) -> None:
     with pytest.raises(KeyboardInterrupt):
         main()

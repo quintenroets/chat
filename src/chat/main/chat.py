@@ -18,6 +18,12 @@ class Chat:
     )
     history: History = field(default_factory=lambda: History())
 
+    def __post_init__(self) -> None:
+        if context.options.system_prompt is not None:
+            content = context.options.system_prompt
+            message = Message(role=Role.system, content=content)
+            self.history.add(message)
+
     def send(self, prompt: str) -> None:
         message = Message(role=Role.user, content=prompt)
         self.history.add(message)
