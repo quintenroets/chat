@@ -23,8 +23,7 @@ class Path(superpathlib.Path):
     @classproperty
     def config(cls) -> Self:
         path = cls.assets / "config" / "config.yaml"
-<<<<<<< HEAD
-        return cast(T, path)
+        return cast("Self", path)
 
     @classmethod
     @classproperty
@@ -36,7 +35,4 @@ class Path(superpathlib.Path):
     @classproperty
     def session(cls: type[T]) -> T:
         path = cls.history / "session"
-        return cast(T, path)
-=======
         return cast("Self", path)
->>>>>>> template
