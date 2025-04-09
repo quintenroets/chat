@@ -27,12 +27,12 @@ class Path(superpathlib.Path):
 
     @classmethod
     @classproperty
-    def history(cls: type[T]) -> T:
+    def history(cls) -> Self:
         path = cls.assets / "history"
-        return cast(T, path)
+        return cast("Self", path)
 
     @classmethod
     @classproperty
-    def session(cls: type[T]) -> T:
+    def session(cls) -> Self:
         path = cls.history / "session"
         return cast("Self", path)
