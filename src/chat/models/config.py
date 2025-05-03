@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from dataclasses import dataclass, field
 
 from .path import Path
@@ -12,3 +13,5 @@ class Config:
     )
     pause_time: float | None = None
     temperature: float | None = None
+=======
+>>>>>>> template
