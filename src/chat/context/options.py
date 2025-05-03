@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
-from .messages import Role
-from .path import Path
+from chat.models import Path, Role
 
 
 @dataclass

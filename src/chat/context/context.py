@@ -6,7 +6,10 @@ from package_utils.context import Context as Context_
 from rich.style import Style
 from rich.text import Text
 
-from chat.models import Config, Options, Role
+from chat.models import Role
+
+from .config import Config
+from .options import Options
 
 
 class Context(Context_[Options, Config, None]):

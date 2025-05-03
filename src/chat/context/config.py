@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from .path import Path
+from chat.models.path import Path
 
 
 @dataclass
