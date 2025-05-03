@@ -1,18 +1,15 @@
 import os
 from functools import cached_property
 
-<<<<<<< HEAD
 import cli
 from package_utils.context import Context as Context_
 from rich.style import Style
 from rich.text import Text
-=======
+
+from chat.models import Role
+
 from .config import Config
 from .options import Options
-from .secrets_ import Secrets
->>>>>>> template
-
-from chat.models import Config, Options, Role
 
 
 class Context(Context_[Options, Config, None]):

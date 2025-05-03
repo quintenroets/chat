@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 from dataclasses import dataclass, field
 
-from .path import Path
+from chat.models.path import Path
 
 
 @dataclass
@@ -13,5 +12,3 @@ class Config:
     )
     pause_time: float | None = None
     temperature: float | None = None
-=======
->>>>>>> template

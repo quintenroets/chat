@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 from dataclasses import dataclass
 
-from .messages import Role
-from .path import Path
+from chat.models import Path, Role
 
 
 @dataclass
@@ -11,5 +9,3 @@ class Options:
     system_prompt: str | None = None
     conversation_starter: Role | None = None
     config_path: Path = Path.config
-=======
->>>>>>> template
