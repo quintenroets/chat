@@ -19,7 +19,7 @@ class Chat:
             temperature=context.config.temperature,
         ),
     )
-    history: History = field(default_factory=lambda: History())
+    history: History = field(default_factory=History)
 
     def __post_init__(self) -> None:
         if context.options.system_prompt is not None:
